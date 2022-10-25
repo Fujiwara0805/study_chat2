@@ -1,0 +1,36 @@
+<%# 一覧表示画面 %>
+<div class='index-main'>
+  <div class='post-contents'>
+    <% @questions.each do |question| %>
+      <%# 投稿１件分の表示 %>
+      <div class='post-content'>
+        <%# コメントに関する表示 %>
+        <div class='comment'>
+          <div class='comment__num'>
+            0
+          </div>
+          <div class='comment__unit'>
+            comments
+          </div>
+        </div>
+
+        <%# 質問本文の表示 %>
+        <div class='question'>
+          <div class='question-top'>
+            <div class='question-top__title'>
+              <%= link_to question.title, question_path(question.id) %>
+            </div>
+            <div class='question-top__name'>
+              <%= question.name %>
+            </div>
+          </div>
+          <div class='question-bottom'>
+            <div class='question-bottom__content'>
+              <%= question.content %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
