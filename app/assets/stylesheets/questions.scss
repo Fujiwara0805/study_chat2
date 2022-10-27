@@ -313,7 +313,7 @@ header {
   width: 100%;
   height: 100%;
   border-radius: 5px;
-  background-color: #1C3667;
+  background-color: #47671c;
   font-size: 18px;
   color: #FFFFFF;
   border: none;
@@ -323,6 +323,7 @@ header {
   margin-bottom: 15px;
   font-size: 14px;
   font-weight: 600;
+  padding-top: 30px;
 }
 
 .answer-content__text {
@@ -334,6 +335,31 @@ header {
   font-size: 12px;
   text-align: right;
 }
+
+.show-edit-form {
+  text-align: center;
+}
+
+.question-red-btn {
+  background-color: #ea352d;
+  font-size: 12px;
+  font-weight: bold;
+  color: #FFF;
+  margin: 20px 0px;
+  padding: 2vh 6vw;
+  text-align: center;
+
+}
+
+.question-destroy {
+  background-color: lightgray;
+  font-size: 12px;
+  color: black;
+  margin: 20px 0px;
+  padding: 2vh 6vw;
+  text-align: center;
+}
+
 /******************************************** 
   ログイン・新規登録画面
 *********************************************/
@@ -367,7 +393,7 @@ header {
 .form-group {
   text-align: center;
   margin-top: 30px;
-  font-size: 20px;
+  font-size: 15px;
 }
 
 .login-btn {
@@ -400,3 +426,11 @@ header {
   width: 45vw;
   height: 5vh;
 }
+
+.input-name {
+  width: 20vw;
+  height: 5vh;
+}
+
+
+

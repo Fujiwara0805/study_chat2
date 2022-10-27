@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :authenticate_user!,  except: [:index, :show]
+  before_action :authenticate_user!,  except: [:index]
 
   def index
     @questions = Question.all
@@ -20,7 +20,28 @@ class QuestionsController < ApplicationController
     @answers = @question.answers
   end
 
+  def edit
+    @question = Question.find(params[:id])
+  end
+
+  def update
+    @question = Question.find(params[:id])
+    if @question.update(question_params)
+      redirect_to root_path
+     else
+      render :edit
+     end
+  end
+
+  def destroy
+    if @question = Question.find(params[:id]) 
+      @question.destroy
+    end 
+      redirect_to root_path
+  end
+
   private
+
   def question_params
     params.require(:question).permit(:title, :content, :name).merge(user_id: current_user.id)
   end
