@@ -3,5 +3,8 @@ Rails.application.routes.draw do
   root to: 'questions#index'
   resources :questions, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
     resources :answers, only: [:create] 
+    collection do
+      get 'search'
+    end
   end
 end

@@ -25,11 +25,17 @@
         <div class="show-answer-form__name">
           <%= form.text_field :name, placeholder: "投稿者名" %>
         </div>
+        <div class="tag-form">
+         <th>タグ</th>
+         <td><%= @question.tags.first&.tag_name %></td>
+       </div>
         <div class="show-answer-form__submit">
           <%= form.submit "POST" %>
         </div>
-        <% end %>    
+        <% end %>     
       </div>
+
+
       
       <div class="show-edit-form">
        <% if current_user.id == @question.user_id %>

@@ -1,32 +1,41 @@
 class QuestionsController < ApplicationController
   before_action :authenticate_user!,  except: [:index]
+  before_action :set_question, only: [:show, :edit, :update]
 
   def index
     @questions = Question.all
   end
 
   def new
-    @question = Question.new
+    @question_form = QuestionForm.new
   end
 
   def create
-    Question.create(question_params)
-    redirect_to action: :index
+    @question_form = QuestionForm.new(question_form_params)
+    @question_form.user_id = current_user.id
+    if @question_form.valid?
+      @question_form.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   def show 
-    @question = Question.find(params[:id])
     @answer = Answer.new
     @answers = @question.answers
   end
 
   def edit
-    @question = Question.find(params[:id])
+    question_attributes = @question.attributes
+    @question_form = QuestionForm.new(question_attributes)
+    @question_form.tag_name = @question.tags.first&.tag_name
   end
 
   def update
-    @question = Question.find(params[:id])
-    if @question.update(question_params)
+    @question_form = QuestionForm.new(question_form_params)
+    if @question_form.valid?
+      @question_form.update(question_form_params, @question)
       redirect_to root_path
      else
       render :edit
@@ -34,16 +43,28 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    if @question = Question.find(params[:id]) 
-      @question.destroy
+    if@question = Question.find(params[:id])
+       @question.destroy
     end 
       redirect_to root_path
   end
 
+  def search
+    if params[:q]&.dig(:title)
+      squished_keywords = params[:q][:title].squish
+      params[:q][:title_cont_any] = squished_keywords.split(" ")
+    end
+    @q = Question.ransack(params[:q])
+    @questions = @q.result
+  end
+  
   private
 
-  def question_params
-    params.require(:question).permit(:title, :content, :name).merge(user_id: current_user.id)
+  def set_question
+    @question = Question.find(params[:id])
   end
 
+  def question_form_params
+    params.require(:question_form).permit(:title, :content, :name, :tag_name)
+  end
 end
