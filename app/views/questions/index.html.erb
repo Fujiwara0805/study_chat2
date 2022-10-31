@@ -1,5 +1,16 @@
 <%# 一覧表示画面 %>
 <div class='index-main'>
+  <div class='search-bar-contents'>
+    <%= search_form_for Question.ransack(params[:q]), url: search_questions_path, html: {class: "search-form"} do |f| %>
+      <%= f.text_field :title, placeholder: '投稿名から探す', class: 'input-box' %>
+      <br>
+      <%= f.label :submit, class: "search-button" do %>
+        <input type="submit" value="検索" class="send">
+        <%= f.submit :submit, id: "q_submit", style: "display: none;"%>
+      <% end %>
+    <% end %>
+  </div>
+
   <div class='post-contents'>
     <% @questions.each do |question| %>
       <%# 投稿１件分の表示 %>

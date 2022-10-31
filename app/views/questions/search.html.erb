@@ -1,0 +1,27 @@
+<h3>検索ページ</h3>
+<h3><%= link_to 'トップページへ戻る', root_path%></h3>
+<div class='question-contents' id="detailed-search-result-wrapper">
+  <%= search_form_for @q, url: search_questions_path, html: {id: "detailed-search-form"} do |f| %>
+    <div class="search-field">
+      <%= f.label :titlet, 'タイトル' %>
+      <br>
+      <%= f.text_field :title, placeholder: 'タイトル', value: params[:q]&.dig(:title) %>
+    </div>
+    <div class="search-field">
+      <%= f.label :name_cont, '投稿者名' %>
+      <br>
+      <%= f.text_field :name_cont, placeholder: '投稿者名' %>
+    </div>
+    <%= f.submit '検索' %>
+  <% end %>
+  <ul class='question-lists' id="detailed-search-result">
+    <% @questions.each do |question| %>
+      <li class='list'>
+        <div class='posted-content'>
+          <%= question.title %><br>
+          <%= link_to '詳細', question_path(question.id)%>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
