@@ -31,7 +31,6 @@ class QuestionsController < ApplicationController
   def edit
     question_attributes = @question.attributes
     @question_form = QuestionForm.new(question_attributes)
-    @question_form.tag_name = @question.tags.first&.tag_name
   end
 
   def update
@@ -67,6 +66,6 @@ class QuestionsController < ApplicationController
   end
 
   def question_form_params
-    params.require(:question_form).permit(:title, :content, :name, :tag_name).merge(user_id: current_user.id)
+    params.require(:question_form).permit(:title, :content, :name).merge(user_id: current_user.id)
   end
 end

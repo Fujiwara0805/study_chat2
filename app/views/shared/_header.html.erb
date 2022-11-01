@@ -22,7 +22,7 @@
 
     <div class='post-button'>
       <% if user_signed_in? %>
-        <%= link_to '質問', new_question_path, class: "shitumon" %>
+        <%= link_to '投稿', new_question_path, class: "shitumon" %>
         <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %>
       <% else %>
         <%= link_to 'ログイン', new_user_session_path, class: "login" %>
