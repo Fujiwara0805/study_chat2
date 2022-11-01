@@ -61,3 +61,5 @@ gem 'devise'
 gem 'ransack'
 
 gem "gretel"
+
+gem 'kaminari'

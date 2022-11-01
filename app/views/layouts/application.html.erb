@@ -7,28 +7,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">   
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
   </head>
 
   <body>
-      <header>
-      <div class='header-contents'>
-        <div class='logo'>
-          <%= link_to 'Chat', root_path %>
-        </div>
-        <div class='post-button'>
-        <% if user_signed_in? %>
-          <%= link_to '質問', new_question_path, class: "shitumon" %>
-          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %>
-        <% else %>
-          <%= link_to 'ログイン', new_user_session_path, class: "login" %>
-          <%= link_to '新規登録', new_user_registration_path, class: "sign-up" %>
-        <% end %>
-        </div>
-      </div>
-      
-    </header>
     <%= yield %>
   </body>
 </html>

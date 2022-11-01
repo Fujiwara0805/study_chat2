@@ -1,27 +1,39 @@
-<h3>検索ページ</h3>
-<h3><%= link_to 'トップページへ戻る', root_path%></h3>
-<div class='question-contents' id="detailed-search-result-wrapper">
-  <%= search_form_for @q, url: search_questions_path, html: {id: "detailed-search-form"} do |f| %>
-    <div class="search-field">
-      <%= f.label :titlet, 'タイトル' %>
-      <br>
-      <%= f.text_field :title, placeholder: 'タイトル', value: params[:q]&.dig(:title) %>
-    </div>
-    <div class="search-field">
-      <%= f.label :name_cont, '投稿者名' %>
-      <br>
-      <%= f.text_field :name_cont, placeholder: '投稿者名' %>
-    </div>
-    <%= f.submit '検索' %>
-  <% end %>
-  <ul class='question-lists' id="detailed-search-result">
+<%= render "shared/header" %>
+
+<div class='index-main'>
+  <div class='post-contents'>
     <% @questions.each do |question| %>
-      <li class='list'>
-        <div class='posted-content'>
-          <%= question.title %><br>
-          <%= link_to '詳細', question_path(question.id)%>
+      <%# 投稿１件分の表示 %>
+      <div class='post-content'>
+        <%# コメントに関する表示 %>
+        <div class='comment'>
+          <div class='comment__num'>
+            0
+          </div>
+          <div class='comment__unit'>
+            comments
+          </div>
         </div>
-      </li>
+
+        <%# 質問本文の表示 %>
+        <div class='question'>
+          <div class='question-top'>
+            <div class='question-top__title'>
+              <%= link_to question.title, question_path(question.id) %>
+            </div>
+            <div class='question-top__name'>
+              <%= question.name %>
+            </div>
+          </div>
+          <div class='question-bottom'>
+            <div class='question-bottom__content'>
+              <%= question.content %>
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </ul>
+  </div>
 </div>
+
+<%= render "shared/footer" %>

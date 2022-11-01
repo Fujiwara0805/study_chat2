@@ -1,3 +1,5 @@
+<%= render "shared/header" %>
+
 <div class="show-main">
   <div class="show-contents">
     <%# 質問内容の表示 %>
@@ -11,11 +13,16 @@
       <div class="show-question__name">
         <%= @question.name %>
       </div>
-    </div>
-
-    <%# 回答投稿フォームの表示 %>
-    <div class="show-answer-form">
-      <%= form_with(model: [@question, @answer], url: question_answers_path(@question.id), method: :post, local: true) do |form| %>
+      <div class="good-times">Good! <%= @question.likes.count %></div>
+        <% if current_user.already_liked?(@question) %>
+          <%= button_to '取消', question_like_path(@question), method: :delete %>
+        <% else %>
+          <%= button_to 'Good!', question_likes_path(@question) %>
+        <% end %>
+      </div>
+      <%# 回答投稿フォームの表示 %>
+      <div class="show-answer-form">
+        <%= form_with(model: [@question, @answer], url: question_answers_path(@question.id), method: :post, local: true) do |form| %>
         <div class="show-answer-form__heading">
           回答する
         </div>
@@ -35,8 +42,6 @@
         <% end %>     
       </div>
 
-
-      
       <div class="show-edit-form">
        <% if current_user.id == @question.user_id %>
         <%= link_to "編集", edit_question_path(@question.id) , method: :get, class: "question-red-btn" %>
@@ -59,6 +64,9 @@
             </div>
           </div>
         <% end %>
-      </div>  
+      </div>
+    </div>  
   </div>
 </div>
+
+<%= render "shared/footer" %>

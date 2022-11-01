@@ -1,0 +1,33 @@
+<header>
+  <div class='header-contents'>
+    <div class='logo'>
+      <%= link_to 'Chat', root_path %>
+    </div>
+      <ul class="nav-list">
+        <li class="nav-list-item">
+          <a href="#">ホーム</a>
+        </li>
+        <li class="nav-list-item"><a href="#">トレンド</a></li>
+        <li class="nav-list-item"><a href="#">募集</a></li>
+      </ul>
+    <div class='search-bar-contents'>
+      <%= search_form_for Question.ransack(params[:q]), url: search_questions_path, html: {class: "search-form"} do |f| %>
+        <%= f.text_field :title, placeholder: '投稿から探す', class: 'input-box' %>
+        <%= f.label :submit, class: "search-button" do %>
+        <input type="submit" value="検索" class="send">
+        <%= f.submit :submit, id: "q_submit", style: "display: none;"%>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class='post-button'>
+      <% if user_signed_in? %>
+        <%= link_to '質問', new_question_path, class: "shitumon" %>
+        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %>
+      <% else %>
+        <%= link_to 'ログイン', new_user_session_path, class: "login" %>
+        <%= link_to '新規登録', new_user_registration_path, class: "sign-up" %>
+      <% end %>
+    </div>
+  </div>
+</header>

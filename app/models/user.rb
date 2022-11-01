@@ -17,4 +17,10 @@ class User < ApplicationRecord
   
   has_many :items
   has_many :questions
+  has_many :likes, dependent: :destroy
+  has_many :liked_questions, through: :likes, source: :question
+
+  def already_liked?(question)
+    self.likes.exists?(question_id: question.id)
+  end
 end

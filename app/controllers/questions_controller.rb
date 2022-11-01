@@ -4,6 +4,7 @@ class QuestionsController < ApplicationController
 
   def index
     @questions = Question.all
+    @questions = Question.all.page(params[:page]).per(6)
   end
 
   def new
@@ -24,6 +25,7 @@ class QuestionsController < ApplicationController
   def show 
     @answer = Answer.new
     @answers = @question.answers
+    @like = Like.new
   end
 
   def edit
@@ -43,8 +45,8 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    if@question = Question.find(params[:id])
-       @question.destroy
+    if @question = Question.find(params[:id])
+      @question.destroy
     end 
       redirect_to root_path
   end
@@ -65,6 +67,6 @@ class QuestionsController < ApplicationController
   end
 
   def question_form_params
-    params.require(:question_form).permit(:title, :content, :name, :tag_name)
+    params.require(:question_form).permit(:title, :content, :name, :tag_name).merge(user_id: current_user.id)
   end
 end
