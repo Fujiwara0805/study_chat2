@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2022_11_01_123130) do
     t.string "title"
     t.text "content"
     t.string "name"
+    t.string "video"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

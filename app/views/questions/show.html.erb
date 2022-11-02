@@ -8,8 +8,8 @@
         <%= @question.title %>
       </div>
        <div class="question-img-content">
-        <% if @question.image.attached? %>
-          <%= image_tag @question.image %>
+        <% if @question.video != nil %>
+          <%= video_tag @question.video.url, autoplay: false, muted: false, controls: true , :size => "30x40"%>
         <% end %>
       </div>
       <div class="show-question__content">
