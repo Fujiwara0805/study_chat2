@@ -63,3 +63,6 @@ gem 'ransack'
 gem "gretel"
 
 gem 'kaminari'
+
+gem 'carrierwave'
+
