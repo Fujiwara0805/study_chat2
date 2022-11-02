@@ -1,6 +1,6 @@
 class QuestionForm
   include ActiveModel::Model
-  attr_accessor :title, :content, :name, :user_id, :id, :created_at, :updated_at, :image, :video
+  attr_accessor :title, :content, :name, :user_id, :id, :created_at, :updated_at, :image, :video, :youtube_url
 
   with_options presence: true do
     validates :name
@@ -13,7 +13,7 @@ class QuestionForm
   end
   
   def save
-    question = Question.create(title: title, content: content, name: name, user_id: user_id, image: image, video: video)
+    question = Question.create(title: title, content: content, name: name, user_id: user_id, image: image, video: video, youtube_url: youtube_url)
   end
 
   def update(params, question)
