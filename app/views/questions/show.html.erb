@@ -7,8 +7,13 @@
       <div class="show-question__title">
         <%= @question.title %>
       </div>
+       <div class="question-img-content">
+        <% if @question.image.attached? %>
+          <%= image_tag @question.image %>
+        <% end %>
+      </div>
       <div class="show-question__content">
-        <%= @question.content %>
+        <%= text_url_to_link((h(@question.content).html_safe)).html_safe %>
       </div>
       <div class="show-question__name">
         <%= @question.name %>
