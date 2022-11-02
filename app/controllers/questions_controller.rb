@@ -4,7 +4,7 @@ class QuestionsController < ApplicationController
 
   def index
     @questions = Question.all
-    @questions = Question.all.page(params[:page]).per(6)
+    @questions = Question.all.page(params[:page]).per(7)
   end
 
   def new
@@ -14,14 +14,21 @@ class QuestionsController < ApplicationController
   def create
     @question_form = QuestionForm.new(question_form_params)
     @question_form.user_id = current_user.id
-    if @question_form.valid?
-      @question_form.save
-      redirect_to root_path
-    else
-      render :new
+    url = params[:question_form][:youtube_url]
+    url = url.last(11)
+    @question_form.youtube_url = url
+    respond_to do |format|
+      if @question_form.valid?
+        @question_form.save
+        format.html { redirect_to root_path, notice: 'Question was successfully created.' }
+        format.json { render :show, status: :created, location: @question_form }
+      else
+        format.html { render :new }
+        format.json { render json: @question_form.errors, status: :unprocessable_entity }
+      end
     end
   end
-
+  
   def show 
     @answer = Answer.new
     @answers = @question.answers
@@ -35,12 +42,19 @@ class QuestionsController < ApplicationController
 
   def update
     @question_form = QuestionForm.new(question_form_params)
-    if @question_form.valid?
-      @question_form.update(question_form_params, @question)
-      redirect_to root_path
+    url = params[:question_form][:youtube_url]
+    url = url.last(11)
+    @question_form.youtube_url = url
+    respond_to do |format|
+      if @question_form.valid?
+        @question_form.update(question_form_params, @question)
+        format.html { redirect_to root_path, notice: 'Question was successfully created.' }
+        format.json { render :show, status: :created, location: @question_form }
      else
-      render :edit
+        format.html { render :edit }
+        format.json { render json: @question_form.errors, status: :unprocessable_entity }
      end
+    end
   end
 
   def destroy
@@ -56,7 +70,7 @@ class QuestionsController < ApplicationController
       params[:q][:title_cont_any] = squished_keywords.split(" ")
     end
     @q = Question.ransack(params[:q])
-    @questions = @q.result.page(params[:page]).per(6)
+    @questions = @q.result.page(params[:page]).per(7)
   end
   
   private
@@ -66,6 +80,6 @@ class QuestionsController < ApplicationController
   end
 
   def question_form_params
-    params.require(:question_form).permit(:title, :content, :name, :image, :video).merge(user_id: current_user.id)
+    params.require(:question_form).permit(:title, :content, :name, :image, :video, :youtube_url).merge(user_id: current_user.id)
   end
 end

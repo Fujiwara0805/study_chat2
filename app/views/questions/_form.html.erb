@@ -1,9 +1,11 @@
 <%= form_with model: @question_form, url: url, method: method, id: 'new_question', local: true do |f| %>
   <div class='input-items'>
+    <div class='input-youtube'>
+      <%= f.text_field :youtube_url, placeholder: "youtube URL ※https://youtu.be/以降11桁を入力" %>
+    </div>
     <div class="img-upload">
-      <div class="weight-bold-text">投稿動画</div>
+      <div class="weight-bold-text">動画(※youtube除く)</div>
       <div class="click-upload">
-        <p>クリックしてファイルをアップロード</p>
         <%= f.file_field :video, :accept => 'video/*' %>
       </div>
     </div>
