@@ -22,7 +22,10 @@ div {
 *********************************************/
 header {
   height: 80px;
-  background-color: #47671c;
+  background-image: url(image1.png);
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
 }
 
 .header-contents {
@@ -49,8 +52,9 @@ header {
 
 .nav-list-item a {
   text-decoration: none;
-  color: #fff;
+  color: white;
   font-weight : bolder;
+  font-size: 16px;
 }
 
 .nav-list-item a:hover {
@@ -61,7 +65,7 @@ header {
   font-size: 35px;
   letter-spacing: 1.8px;
   font-family: "Source Sans Pro", Helvetica, Arial, "æ¸¸ã‚´ã‚·ãƒƒã‚¯ä½“", "YuGothic", "ãƒ¡ã‚¤ãƒªã‚ª", "Meiryo", sans-serif;
-  color: #FFFFFF;
+  color: white;
   font-weight : bolder;
   text-decoration: none;
 }
@@ -80,7 +84,12 @@ header {
   line-height: 32px;
   text-decoration: none;
   color: white;
+  font-weight: bold;
   font-size: 16px;
+}
+
+.post-button a:hover {
+  color: deeppink;
 }
 
 .shitumon {
@@ -107,7 +116,7 @@ header {
   一覧画面
 *********************************************/
 .index-main {
-  height: 110vh;
+  height: 120vh;
   padding: 30px 0px;
   background-color: #F2F2F3;
 }
@@ -127,7 +136,7 @@ header {
 .comment {
   width: 70px;
   height: 100%;
-  background-color: #47671c;
+  background-color: skyblue;
   color: #FFFFFF;
   border-radius: 5px 0 0 5px;
 }
@@ -200,6 +209,7 @@ header {
   border-radius: 15px;
 }
 
+
 /********************************************
   投稿画面
 *********************************************/
@@ -218,8 +228,10 @@ header {
 .form-top {
   width: 100%;
   height: 45px;
+  font-size: 20px;
+  font-weight: bold;
   border-radius: 5px 5px 0 0;
-  background-color: #47671c;
+  background-color: skyblue;
   color: #FFFFFF;
   text-align:center;
   padding:10px 0; 
@@ -227,8 +239,8 @@ header {
 
 .form-main {
   width: 100%;
-  height: 350px;
-  padding: 40px 0;
+  height: 400px;
+  padding: 10px 0;
   border-radius: 0 0 5px 5px;
   background-color: #FFFFFF;
 }
@@ -249,6 +261,7 @@ header {
 }
 
 .input-items__title {
+  margin-top: 20px;
   width: 100%;
   height: 30px;
 }
@@ -275,7 +288,7 @@ header {
   border: none;
   font-size: 20px;
   color: #FFFFFF;
-  background-color: #47671c;
+  background-color: skyblue;
 }
 
 /******************************************** 
@@ -299,6 +312,10 @@ header {
   font-size: 18px;
   font-weight: 600;
   text-decoration: underline;
+}
+.question-img-content {
+  text-align: center;
+  width: 100%;
 }
 
 .show-question__content {
@@ -362,7 +379,7 @@ header {
   width: 100%;
   height: 100%;
   border-radius: 5px;
-  background-color: #47671c;
+  background-color: skyblue;
   font-size: 18px;
   color: #FFFFFF;
   border: none;

@@ -56,7 +56,7 @@ class QuestionsController < ApplicationController
       params[:q][:title_cont_any] = squished_keywords.split(" ")
     end
     @q = Question.ransack(params[:q])
-    @questions = @q.result
+    @questions = @q.result.page(params[:page]).per(6)
   end
   
   private
@@ -66,6 +66,6 @@ class QuestionsController < ApplicationController
   end
 
   def question_form_params
-    params.require(:question_form).permit(:title, :content, :name).merge(user_id: current_user.id)
+    params.require(:question_form).permit(:title, :content, :name, :image).merge(user_id: current_user.id)
   end
 end
