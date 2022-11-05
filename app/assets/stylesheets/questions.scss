@@ -116,7 +116,7 @@ header {
   一覧画面
 *********************************************/
 .index-main {
-  height: 125vh;
+  height: 130vh;
   padding: 30px 0px;
   background-color: #F2F2F3;
 }
@@ -208,7 +208,6 @@ header {
 .pagination>li>a:hover {
   border-radius: 15px;
 }
-
 
 /********************************************
   投稿画面
@@ -396,14 +395,23 @@ header {
   padding-top: 30px;
 }
 
+.answer-content {
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  background: #f0f7ff;
+  border: dashed 2px #5b8bd0;/*点線*/
+}
+
 .answer-content__text {
   font-size: 14px;
+  padding: 2px;
 }
 
 .answer-content__name {
   margin-bottom: 30px;
   font-size: 12px;
   text-align: right;
+  padding-right: 10px;
 }
 
 .show-edit-form {
@@ -418,7 +426,6 @@ header {
   margin: 20px 0px;
   padding: 2vh 6vw;
   text-align: center;
-
 }
 
 .question-destroy {
