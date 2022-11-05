@@ -5,10 +5,10 @@
     </div>
       <ul class="nav-list">
         <li class="nav-list-item">
-          <a href="#">ホーム</a>
+          <a href="#">Home</a>
         </li>
-        <li class="nav-list-item"><a href="#">トレンド</a></li>
-        <li class="nav-list-item"><a href="#">募集</a></li>
+        <li class="nav-list-item"><a href="#">category</a></li>
+        <li class="nav-list-item"><a href="#">rank</a></li>
       </ul>
     <div class='search-bar-contents'>
       <%= search_form_for Question.ransack(params[:q]), url: search_questions_path, html: {class: "search-form"} do |f| %>

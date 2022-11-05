@@ -66,3 +66,5 @@ gem 'kaminari'
 
 gem 'carrierwave'
 
+gem 'rails-i18n'
+
