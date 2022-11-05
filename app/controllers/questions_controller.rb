@@ -80,6 +80,6 @@ class QuestionsController < ApplicationController
   end
 
   def question_form_params
-    params.require(:question_form).permit(:title, :content, :name, :image, :video, :youtube_url).merge(user_id: current_user.id)
+    params.require(:question_form).permit(:title, :content, :name, :video, :youtube_url).merge(user_id: current_user.id)
   end
 end

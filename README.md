@@ -9,31 +9,12 @@
 | nickname           | string              | null: false               |
 | email              | string              | null: false, unique: true |
 | encrypted_password | string              | null: false               |
-| first_name         | string              | null: false               |
-| last_name          | string              | null: false               |
-| first_name_k       | string              | null: false               |
-| last_name_k        | string              | null: false               |
-| date_of_birth      | date                | null: false               |
 
 ### Association
 
-* has_many :items
 * has_many :questions
-
-
-## items table
-
-| Column                              | Type       | Options                        |
-|-------------------------------------|------------|--------------------------------|
-| name                                | string     | null: false                    |
-| text                                | text       | null: false                    |
-| category_id                         | integer    | null: false                    |
-| user                                | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :user
-- belongs_to :category_id
+* has_many :likes, dependent: :destroy
+* has_many :liked_questions, through: :likes, source: :question
 
 ## questions table
 
@@ -41,13 +22,17 @@
 |-------------------------------------|------------|--------------------------------|
 | name                                | string     | null: false                    |
 | title                               | string     | null: false                    |
+| video                               | string     |                                |
+| youtube_url                         | string     |                                |
 | content                             | text       | null: false                    |
 | user                                | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
-- has_one :answer
+- has_many :answers
+- has_many :likes, dependent: :destroy
+- has_many :liked_users, through: :likes, source: :user
 
 ## answers table
 
@@ -61,3 +46,16 @@
 ### Association
 
 - belongs_to :question
+
+## likes table
+
+| Column                              | Type       | Options                        |
+|-------------------------------------|------------|--------------------------------|
+| question                            | references | null: false, foreign_key: true |
+| user                                | references | null: false, foreign_key: true |
+
+
+### Association
+
+- belongs_to :question
+- belongs_to :user
