@@ -59,6 +59,12 @@ https://docs.google.com/spreadsheets/d/1QorerAMYDXTStOpVg4rJEjVuOLfUdY2RbP-W6Wi0
 ・いいね機能
 [![Image from Gyazo](https://i.gyazo.com/aae9cbdb3eac07d09bb63b5336860faf.gif)](https://gyazo.com/aae9cbdb3eac07d09bb63b5336860faf)
 
+・編集機能
+[![Image from Gyazo](https://i.gyazo.com/cc7b432e711b77acb79bef15d3013817.gif)](https://gyazo.com/cc7b432e711b77acb79bef15d3013817)
+
+・削除機能
+[![Image from Gyazo](https://i.gyazo.com/3691fc0834e0d1a4b683cd5b812f85b6.gif)](https://gyazo.com/3691fc0834e0d1a4b683cd5b812f85b6)
+
 # 実装予定の機能
 今後は投稿内容をカテゴリー別に管理・検索し、保存できる機能を実装予定。
 又、いいねの数によってランキング表示できるようにしたい。
