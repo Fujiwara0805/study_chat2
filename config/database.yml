@@ -52,3 +52,4 @@ production:
   database: study_chat2_production
   username: study_chat2
   password: <%= ENV['STUDY_CHAT2_DATABASE_PASSWORD'] %>
+  url: <%= ENV['CLEARDB_DATABASE_URL']&.sub(/\Amysql/, 'mysql2') %>
