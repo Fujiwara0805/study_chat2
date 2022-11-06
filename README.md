@@ -6,6 +6,7 @@
 又、検索機能が備わっている為、個人の備忘録として活用することも可能です。
 
 # URL
+https://study-chat2.herokuapp.com/
 
 # テスト用アカウント
 ・Basic認証パスワード： admin
